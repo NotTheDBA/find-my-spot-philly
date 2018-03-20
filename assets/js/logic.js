@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCwT5tPYY3WtYfyNlWmgRqHvBPgMn2Sy3s",
-    authDomain: "employee-tracker-b587e.firebaseapp.com",
-    databaseURL: "https://employee-tracker-b587e.firebaseio.com",
-    projectId: "employee-tracker-b587e",
-    storageBucket: "employee-tracker-b587e.appspot.com",
-    messagingSenderId: "924425356946"
+    apiKey: "***REMOVED***",
+    authDomain: "find-my-spot-philly.firebaseapp.com",
+    databaseURL: "https://find-my-spot-philly.firebaseio.com",
+    projectId: "find-my-spot-philly",
+    storageBucket: "",
+    messagingSenderId: "***REMOVED***"
 };
 
 firebase.initializeApp(config);
