@@ -12,14 +12,11 @@ firebase.initializeApp(config);
 // Create a variable to reference the database
 var database = firebase.database();
 
+var dbRef = "Geo";
+// var dbRef = "Philly";  // DB test space
 
 $(document).ready(function() {
 
-
-    //this initializes a second global object called "Philly"
-    // use:
-    // Philly[10] - Get all neighborhood data
-    // Philly[10].geoname - gets the name of neighborhood
     getData();
 
 
@@ -66,14 +63,33 @@ function makeQueryIncomeButton() {
     var button = $("<button>").text("Query Income").addClass("btn btn-primary btn-block");
     button.on("click", function() {
 
-        var hoodsRef = database.ref("Geo").child("hoods");
-        var startIncome = "$25,000"
-        var endIncome = "$30,000"
+        var hoodsRef = database.ref(dbRef).child("hoods");
+        var startIncome = 25000
+        var endIncome = 30000
 
         window.NeighborResults = [];
 
         hoodsRef.orderByChild("median-income").startAt(startIncome).endAt(endIncome).on("child_added", function(snapshot) {
             window.NeighborResults.push(snapshot.val());
+            var link = ""
+
+            $.each(snapshot, function() {
+                var block = $("<div class='block-panel'>");
+                block.append("<div class='row' </div>");
+                block.append("<div class='bundleClick col-xl-6'>");
+                block.append("<a " + "href='Details.html?package=" + snapshot.child("geoname").val() + "'" + ">");
+                block.append("<img class='product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0' src='img/fairmount.jpg' alt='Philly Skyline'" +
+                    "style='width:400px;height:300px;'>");
+                block.append("</a>");
+                block.append("<a class='bundleTitle' " + "href='Details.html?package=" + snapshot.child("geoname").val() + "'" + "></a>");
+                $(".bundleTitle").text("City Name : " + snapshot.child("listname").val());
+                block.append("<br>");
+                block.append("<a class='bundleDescription' " + "href='Details.html?package=" + snapshot.child("geoname").val() + "'" + ">Feel at home in " + snapshot.child("listname").val() + "!</a>");
+                block.append("</a>");
+
+                $(".packagePanel").append(block);
+            });
+
         });
 
         console.log(NeighborResults);
@@ -89,7 +105,7 @@ function makeQueryMapButton() {
     var button = $("<button>").text("Query Map Data").addClass("btn btn-primary btn-block");
     button.on("click", function() {
 
-        var hoodsRef = database.ref("Geo").child("hoods");
+        var hoodsRef = database.ref(dbRef).child("hoods");
         var findGeoName = "PENNYPACK_PARK"
 
         window.GeoResults = [];
@@ -167,16 +183,20 @@ function loadIncomes() {
         //puts the data in our global space
         window.Philly = jsonData;
 
-        var hoodsRef = database.ref("Geo").child("hoods");
+        var hoodsRef = database.ref(dbRef).child("hoods");
 
         Philly.forEach(thisHood => {
             // console.log(thisHood);
 
             var namedHood = hoodsRef.child(thisHood.geoname);
-            console.log(thisHood.geoname);
+            // console.log(thisHood.geoname);/
 
             if (typeof thisHood["Median household income in 2016"] !== 'undefined') {
-                namedHood.child("median-income").set(thisHood["Median household income in 2016"]["This neighborhood"].trim())
+                var income = thisHood["Median household income in 2016"]["This neighborhood"].trim()
+                income = income.replace("$", "").replace(",", "")
+                    // console.log(parseInt(income));
+
+                namedHood.child("median-income").set(parseInt(income))
             }
             if (typeof thisHood["Median rent in 2016"] !== 'undefined') {
                 namedHood.child("median-rent").set(thisHood["Median rent in 2016"]["This neighborhood"].trim())
@@ -249,8 +269,9 @@ function loadMapData() {
         // console.log(jsonData);
         // console.log(jsonData.Map[0].geometry.coordinates);
 
-        database.ref("Geo").remove()
-        var hoodsRef = database.ref("Geo").child("hoods");
+        // database.ref("Hoods").remove()
+        database.ref(dbRef).remove()
+        var hoodsRef = database.ref(dbRef).child("hoods");
 
         var hoodCount = 0;
         jsonData.Map.forEach(thisHood => {
@@ -266,8 +287,8 @@ function loadMapData() {
             hoodCount += 1;
         })
 
-        // database.ref("Geo").child("List").remove()
-        // database.ref("Geo").child("List").set(jsonData.Map)
+        // database.ref(dbRef).child("List").remove()
+        // database.ref(dbRef).child("List").set(jsonData.Map)
 
         loadIncomes();
 
