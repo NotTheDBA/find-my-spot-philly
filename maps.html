@@ -12,12 +12,12 @@
             height: 400px;
             width: 100%;
         }
-
+        
         button {
             padding: 15px;
             margin-bottom: 15px;
         }
-
+        
         #pano {
             height: 400px;
             width: 100%;
@@ -38,46 +38,59 @@
 
     </div>
     <script>
-
-
         function initMap() {
 
             var options = {
                 zoom: 13,
-                center: { lat: 39.9526, lng: -75.1652 },
+                center: {
+                    lat: 39.9526,
+                    lng: -75.1652
+                },
                 mapTypeID: 'roadmap'
             }
             var map = new google.maps.Map(document.getElementById("map"), options);
 
-            $("#ken").on('click', function () {
+            $("#ken").on('click', function() {
 
                 var marker = new google.maps.Marker({
-                    position: { lat: 39.9817, lng: -75.1281 },
-                    map: map,                   
+                    position: {
+                        lat: 39.9817,
+                        lng: -75.1281
+                    },
+                    map: map,
                     //icon :
                 });
                 var panorama = new google.maps.StreetViewPanorama(
                     document.getElementById('pano'), {
-                        position: { lat: 39.9817, lng: -75.1281 },
+                        position: {
+                            lat: 39.9817,
+                            lng: -75.1281
+                        },
                         pov: {
                             heading: 34,
                             pitch: 0
                         }
                     });
                 map.setStreetView(panorama);
-                           
+
             });
 
-        $("#old").on('click', function () {
+            $("#old").on('click', function() {
 
-            var marker = new google.maps.Marker({
-                position: { lat: 39.9521, lng: -75.1407 },
-                map: map,
-                //icon :
-            });
-            var panorama = new google.maps.StreetViewPanorama(
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: 39.9521,
+                        lng: -75.1407
+                    },
+                    map: map,
+                    //icon :
+                });
+                var panorama = new google.maps.StreetViewPanorama(
                     document.getElementById('pano'), {
-                        position: { lat: 39.9521, lng: -75.1407 },
+                        position: {
+                            lat: 39.9521,
+                            lng: -75.1407
+                        },
                         pov: {
                             heading: 34,
                             pitch: 0
@@ -86,18 +99,24 @@
                 map.setStreetView(panorama);
                 map.panTo(position);
 
-        });
-
-        $("#powel").on('click', function () {
-
-            var marker = new google.maps.Marker({
-                position: { lat: 39.9610, lng: -75.1917 },
-                map: map,
-                //icon :
             });
-            var panorama = new google.maps.StreetViewPanorama(
+
+            $("#powel").on('click', function() {
+
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: 39.9610,
+                        lng: -75.1917
+                    },
+                    map: map,
+                    //icon :
+                });
+                var panorama = new google.maps.StreetViewPanorama(
                     document.getElementById('pano'), {
-                        position: { lat: 39.9610, lng: -75.1917 },
+                        position: {
+                            lat: 39.9610,
+                            lng: -75.1917
+                        },
                         pov: {
                             heading: 34,
                             pitch: 0
@@ -105,48 +124,12 @@
                     });
                 map.setStreetView(panorama);
                 map.panTo(position);
-        });
+            });
 
-        // function toggleMarker() {
-        //     var toggle = marker.getVisible();
-        //     if ('click' == false) {
-        //         marker.setVisible(true);
-        //     } else {
-        //         marker.setVisible(false);
-        //     }
-        // }
-
-            //kensington
-            // addMarks({ lat: 39.9817, lng: -75.1281 });
-            // //Old City
-            // addMarks({ lat: 39.9521, lng: -75.1407 });
-            // //Powelton Village
-            // addMarks({ lat: 39.9610, lng: -75.1917 });
-
-
-
-            // function addMarks() {
-            //     var marker = new google.maps.Marker({
-            //         position: { lat: 39.9817, lng: -75.1281 },
-            //         map: map,
-            //         //icon :
-
-            //     });
-            // }
-
-            // marker.addListener('click',function(){
-
-            //     https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=YOUR_API_KEY;
-            //     var panorama = new google.maps.Panorama(document.getElementById("streetView"), options);
-
-            // });
         }
     </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_1lbdtBKugEcIftvmkwIE4nYKr5piAyA&callback=initMap" async
-        defer></script>
-
-    <!-- <script src=https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382, 10.013988&heading=151.78&pitch=-0.76&key=AIzaSyDWQWU7IFR5utRaYGm3mVPhae69rt3edSo></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_1lbdtBKugEcIftvmkwIE4nYKr5piAyA&callback=initMap" async defer></script>
 
 </body>
 

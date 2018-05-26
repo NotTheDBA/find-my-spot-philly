@@ -1,37 +1,26 @@
-# Group Project 1
-### Team:
+# Find My Spot Philly
+
+"Find My Spot Philly uses income-based information about local neighborhoods to help renters and home-owners find the best areas to search for a new place to live.   By matching a site-visitor's income to match neighborhoods with a median income close to theirs, they are able to focus their search to neighborhoods they can afford, and find a new home that meets their budget and lifestyle."
+
+#### Team:
 * Kushagra Bhavsar
 * Anthony Elliott
 * Clay Fairbanks
 * Randy Reitz
 
-## Coding Requirements:
+## Project Intent
 
-* Must use at least two APIs
-* Must use AJAX to pull data
-* Must utilize at least one new library or technology that we haven’t discussed
-* Must have a polished frontend / UI 
-* Must meet good quality coding standards (indentation, scoping, naming)
-* Must NOT use alerts, confirms, or prompts (look into modals!)
-* Must have some sort of repeating element (table, columns, etc)
-* Must use Bootstrap or Alternative CSS Framework
-* Must be Deployed (Github Pages)
-* Must have User Input Validation 
+Find My Spot Philly is a sample project built from concept to presentation in a 2-week sprint with a team of 4 developers.
 
-## Coding – Nice To Haves
-* Utilize Firebase for Persistent Data Storage (Consider this basically a requirement).
-* Mobile Responsive
-* Use an alternative CSS framework like Materialize
+The project concept was to provide a tool to help people looking to move to Philadelphia to find neighborhoods which have the best cost of living for their budget.
 
-## Presentation Requirement
-* You will also be responsible for preparing a 10 minute presentation.
-* This will be a formal presentation. 
-* One in which you explain in detail:
-* Your overall application’s concept
-* The motivation for its development
-* Your design process
-* The technologies you used (and briefly how they work)
-* A demonstration of its functionality
-* Directions for future development
-* Treat the presentation seriously! 
-* Talking intelligently about tech > doing tech sometimes. 
+
+## Technology Used
+* HTML5
+* Customized Bootstrap CSS Theme
+* JavaScript / jQuery
+* Firebase
+* JSON
+* Google Maps API
+
+Demographic and geo coordinate data for the neighborhoods is loaded in to the Firebase database via a jQuery page when the application is deployed.

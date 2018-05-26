@@ -69,36 +69,6 @@
         <span class="site-heading-lower">Bang for My Buck</span>
     </h1>
 
-
-    <!-- Navigation -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="index.html">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="Results.html">Results</a>
-                    </li>
-
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="Details.html">Packages</a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </nav>
- -->
-
-
     <section class="page-section about-heading">
 
         <div class="container" id="details-page">
@@ -205,13 +175,10 @@
         var geocoder = new google.maps.Geocoder();
 
         geocodeAddress(geocoder, map);
-        // document.getElementById('submit').addEventListener('click', function() {
-        //     geocodeAddress(geocoder, map);
-        // });
+
     }
 
     function geocodeAddress(geocoder, resultsMap) {
-        // var address = document.getElementById('address').value;
 
         var link = window.location.href;
         var url = new URL(link);
@@ -223,7 +190,7 @@
         }
 
         console.log(address);
-        // address = "Mantua, Philadelphia"
+
         geocoder.geocode({
             'address': address
         }, function(results, status) {
@@ -231,7 +198,6 @@
                 resultsMap.setCenter(results[0].geometry.location);
                 resultsMap.setZoom(15)
                 var marker = new google.maps.Marker({
-                    // zoom: 20,
                     map: resultsMap,
                     position: results[0].geometry.location
                 });
