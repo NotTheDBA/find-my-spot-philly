@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyA7sNWS4IJJGYoqukX2Xp-EhDB39OqD36I",
+    apiKey: "***REMOVED***",
     authDomain: "find-my-spot-philly.firebaseapp.com",
     databaseURL: "https://find-my-spot-philly.firebaseio.com",
     projectId: "find-my-spot-philly",
     storageBucket: "",
-    messagingSenderId: "818602970975"
+    messagingSenderId: "***REMOVED***"
 };
 
 var g_geo;
